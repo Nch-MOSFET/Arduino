@@ -1,5 +1,5 @@
 #include <MsTimer2.h>
-uint8_t number = 0;
+uint8_t counter = 0;
 
 void setup() {
   DDRD = B11111111;  //D0~7:

@@ -80,9 +80,9 @@
  */
 
 //GPIOの接続先の設定:
-#define TM1638_STB 5
-#define TM1638_CLK 6
-#define TM1638_DIO 7
+#define TM1638_STB 12
+#define TM1638_CLK 11
+#define TM1638_DIO 10
 
 void setup() {
   //各デジタルピンの設定:
@@ -108,10 +108,14 @@ void setup() {
   //表示テスト:
   Clear();
   delay(1000);
-  ctrlAllLED(0b10010110, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111);
+  ctrlAllLED(0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111);
 }
 
 void loop() {
+  Clear();
+  delay(1000);
+  ctrlAllLED(0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111, 0b11111111);
+  delay(1000);
 }
 
 void ctrlAllLED(uint8_t leds, uint8_t Digit1, uint8_t Digit2, uint8_t Digit3, uint8_t Digit4, uint8_t Digit5, uint8_t Digit6, uint8_t Digit7, uint8_t Digit8){

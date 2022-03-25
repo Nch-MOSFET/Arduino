@@ -36,3 +36,32 @@ D10 <--> CLK</br>
 となります。電源は届きようがないのでジャンパ線を使用します</br>
 
 操作用にタクトスイッチも入れています。GNDとD3に繋がっていて、内部プルアップを使用することでプルアップ抵抗を削減しています
+
+# レジスタ関連
+
+![](img/TimingChart-and-DataFormat.png)
+
+レジスタに送信するデータは16bitで構成されています。LSBから順にデータ8bit、アドレス4bit、割り当てなし4bitです
+
+![](functionDiagram.png)
+
+動作はこのようになっています
+
+データを送信する前にCSをLOWにし、DINに送信したいデータを入れてCLKを叩きます。DINにはMSBから送信します。
+つまり、0を4bit、レジスタアドレス4bit、データ8bitの順になります。Arduino標準の`shiftOut();` 関数が便利です
+
+## レジスタアドレスマップ
+
+![](img/Register.png)
+
+レジスタに送信するデータは上記の表の通りです。0x00 ~ 0x0Fの範囲で指定します
+
+デコードモードレジスタ、シャットダウンレジスタへの送信データは以下の通りです
+
+![](img/decodeModeRegister.png)
+![](img/shutDownRegister.png)
+
+デコードモード無効時に送信するデータと各bit-LEDの対応は以下の通りです
+
+![](img/registerMap.png)
+![](img/7Seg-databit.png)

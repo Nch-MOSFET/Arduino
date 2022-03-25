@@ -2,8 +2,8 @@
 #define LED_Pattern_1_size  2
 #define LED_Pattern_2_size 14
 #define LED_Pattern_3_size  2
-#define LED_Pattern_4_size 36
-#define LED_Pattern_5_size 36
+#define LED_Pattern_4_size 37
+#define LED_Pattern_5_size 37
 
 uint8_t LED_Pattern_0[LED_Pattern_0_size] = {B00001111, B11110000};
 uint8_t LED_Pattern_1[LED_Pattern_1_size] = {B00000000, B11111111};
@@ -30,7 +30,7 @@ void setup() {
 }
 
 void loop() {
-  for(uint8_t uint8_t i = 0; i < 4; i++){
+  for(uint8_t i = 0; i < 4; i++){
     PORTD = LED_Pattern_0[0];
     delay(500);
     PORTD = LED_Pattern_0[1];

@@ -17,6 +17,8 @@ void loop() {
       Serial.println(encorder_Num(incomingByte));
     }else if((incomingByte >= 0x41 && 0x5A >= incomingByte) || (incomingByte >= 0x61 && 0x7A >= incomingByte)){
       Serial.println(encorder_Chr(incomingByte));
+    }else{
+      Serial.println();
     }
   }
 }

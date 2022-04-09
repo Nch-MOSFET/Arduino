@@ -7,32 +7,29 @@ char Mark3[ 6] = {'[', ' ', ']', '^', '_', '`'};
 char Mark4[ 4] = {'{', ' ' , '}', '~'};
 
 void setup() {
-  Serial.begin(115200); // 9600bpsでシリアルポートを開く
+  Serial.begin(115200); // 115200bpsでシリアルポートを開く
 }
 
 void loop() {
   if (Serial.available() > 0) { // 受信したデータが存在する
     incomingByte = Serial.read(); // 受信データを読み込む
 
-    Serial.print("I received: "); // 受信データを送りかえす
-    Serial.println(incomingByte, DEC);
-    Serial.print("Encored   :  ");
     if(incomingByte >= 0x30 && 0x39 >= incomingByte){
-      Serial.println(encorder_Num(incomingByte));
+      Serial.print(encorder_Num(incomingByte));
     }else if(incomingByte >= 0x41 && 0x5A >= incomingByte){
-      Serial.println(encorder_Num(incomingByte));
+      Serial.print(encorder_Num(incomingByte));
     }else if(incomingByte >= 0x61 && 0x7A >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
     }else if(incomingByte >= 0x20 && 0x2F >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
     }else if(incomingByte >= 0x3A && 0x40 >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
     }else if(incomingByte >= 0x5B && 0x60 >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
     }else if(incomingByte >= 0x7B && 0x7E >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
     }else{
-      Serial.println();
+      Serial.print();
     }
   }
 }

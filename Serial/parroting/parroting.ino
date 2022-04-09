@@ -29,7 +29,7 @@ void loop() {
     }else if(incomingByte >= 0x7B && 0x7E >= incomingByte){
       Serial.print(encorder_Chr(incomingByte));
     }else{
-      Serial.print();
+      Serial.prinln();
     }
   }
 }

@@ -4,5 +4,5 @@
 
 # ファイル構造
 
-- [parroting/parroting.ino](./parroting/paroting.ino)
+- [parroting/parroting.ino](./parroting/parroting.ino)
   - シリアルコンソールから送信された文字をそのまま返すコード

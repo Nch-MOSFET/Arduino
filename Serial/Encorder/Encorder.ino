@@ -7,7 +7,7 @@ char Mark3[ 6] = {'[', ' ', ']', '^', '_', '`'};
 char Mark4[ 4] = {'{', ' ' , '}', '~'};
 
 void setup() {
-  Serial.begin(115200); // 9600bpsでシリアルポートを開く
+  Serial.begin(115200); // 115200bpsでシリアルポートを開く
 }
 
 void loop() {

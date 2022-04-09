@@ -1,36 +1,34 @@
-uint8_t incomingByte = 0;  // 受信データ用
+uint8_t incomingByte = 0;
+
 char Large[27] = {'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'};
 char Small[27] = {'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'};
 char Mark1[16] = {' ', '!', '"', '#', '$', '%', '&', ' ', '(', ')', '*', '+', ',', '-', '.', '/'};
 char Mark2[ 7] = {':', ';', '<', '=', '>', '?', '`'};
 char Mark3[ 6] = {'[', ' ', ']', '^', '_', '`'};
-char Mark4[ 4] = {'{', ' ' , '}', '~'};
+char Mark4[ 4] = {'{', ' ', '}', '~'}
 
 void setup() {
-  Serial.begin(115200); // 115200bpsでシリアルポートを開く
+  Serial.begin(115200);
 }
 
 void loop() {
-  if (Serial.available() > 0) { // 受信したデータが存在する
-    incomingByte = Serial.read(); // 受信データを読み込む
+  if (Serial.available() > 0) {
+    incomingByte = Serial.read();
 
-    Serial.print("I received: "); // 受信データを送りかえす
-    Serial.println(incomingByte, DEC);
-    Serial.print("Encored   :  ");
-    if(incomingByte >= 0x30 && 0x39 >= incomingByte){
-      Serial.println(encorder_Num(incomingByte));
+          if(incomingByte >= 0x20 && 0x2F >= incomingByte){
+      Serial.print(encorder_Chr(incomingByte));
+    }else if(incomingByte >= 0x30 && 0x39 >= incomingByte){
+      Serial.print(encorder_Num(incomingByte));
     }else if(incomingByte >= 0x41 && 0x5A >= incomingByte){
-      Serial.println(encorder_Num(incomingByte));
-    }else if(incomingByte >= 0x61 && 0x7A >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
-    }else if(incomingByte >= 0x20 && 0x2F >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
-    }else if(incomingByte >= 0x3A && 0x40 >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
     }else if(incomingByte >= 0x5B && 0x60 >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
+    }else if(incomingByte >= 0x61 && 0x7A >= incomingByte){
+      Serial.print(encorder_Chr(incomingByte));
+    }else if(incomingByte >= 0x3A && 0x40 >= incomingByte){
+      Serial.print(encorder_Chr(incomingByte));
     }else if(incomingByte >= 0x7B && 0x7E >= incomingByte){
-      Serial.println(encorder_Chr(incomingByte));
+      Serial.print(encorder_Chr(incomingByte));
     }else{
       Serial.println();
     }

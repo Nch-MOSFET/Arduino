@@ -1,21 +1,25 @@
 #define LED_DIN 12
 #define LED_CS  11
 #define LED_CLK 10
+#define Switch   3
+
+uint8_t pin = 0b11111111;
 
 void setup() {
   pinMode(LED_CS,  OUTPUT);
   pinMode(LED_CLK, OUTPUT);
   pinMode(LED_DIN, OUTPUT);
+  pinMode(Switch ,  INPUT_PULLUP);
   
   digitalWrite(LED_CS,  HIGH);
-  digitalWrite(LED_CLK, LOW);
-  digitalWrite(LED_DIN, LOW);
+  digitalWrite(LED_CLK,  LOW);
+  digitalWrite(LED_DIN,  LOW);
 
-  LED_OUT(0x9, 0b11111111);   //7セグでデコードするビットに1を立てる:
-  LED_OUT(0xA, 5);    //輝度を設定, 0-15:
-  LED_OUT(0xB, 7);    //使用する桁数を指定, 桁数-1:
-  LED_OUT(0xC, 1);    //特にいじる必要なし:
-  LED_OUT(0xF, 0);    //同上:
+  LED_OUT(0x9, 0xff);    //7セグでデコードするビットに1を立てる:
+  LED_OUT(0xA,    5);    //輝度を設定, 0-15:
+  LED_OUT(0xB,    7);    //使用する桁数を指定, 桁数-1:
+  LED_OUT(0xC,    1);    //特にいじる必要なし:
+  LED_OUT(0xF,    0);    //同上:
 
   LED_OUT(0x1, 8);  //1ケタ目のセグメントに表示するものを指定:
   LED_OUT(0x2, 7);  //2ケタ目:
@@ -28,8 +32,21 @@ void setup() {
 }
 
 void loop() {
-  Display_Number(random(-10000000, 100000000));
-  delay(250);
+  pin = (pin << 1) + digitalRead(Switch);
+
+  if(pin == 0b11110000){
+    LED_OUT(0x1, random(10));
+    LED_OUT(0x2, random(10));
+    LED_OUT(0x3, random(10));
+    LED_OUT(0x4, random(10));
+    LED_OUT(0x5, random(10));
+    LED_OUT(0x6, random(10));
+    LED_OUT(0x7, random(10));
+    LED_OUT(0x8, random(10));
+    
+  }
+
+  delay(5);
 }
 
 void LED_OUT(uint8_t addr, uint8_t dat){

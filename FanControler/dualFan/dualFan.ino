@@ -7,7 +7,9 @@
 uint16_t ana;
 uint8_t Fan1, Fan2, SW, pinRead;
 
-uint8_t LED_Pattern[3][6] = {{0, 0, 0, 0, 1, 0}, {0, 0, 1, 0, 1, 0}, {1, 0, 1, 0, 1, 0}};
+uint8_t LED_Pattern[3][6] = {{0, 0, 0, 0, 1, 0}, 
+                             {0, 0, 1, 0, 1, 0}, 
+                             {1, 0, 1, 0, 1, 0}};
 
 void setup() {
   pinMode(PWM_OUT_1 , OUTPUT       );

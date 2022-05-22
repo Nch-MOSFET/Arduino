@@ -1,6 +1,3 @@
-// this library is public domain. enjoy!
-// www.ladyada.net/learn/sensors/thermocouple
-
 #ifdef __AVR
   #include <avr/pgmspace.h>
 #elif defined(ESP8266)

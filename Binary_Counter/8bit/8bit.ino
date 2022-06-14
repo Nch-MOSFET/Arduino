@@ -1,5 +1,4 @@
 #include <MsTimer2.h>
-uint8_t number = 0;
-void counter() {PORTD = number; number++;}
-void setup() {DDRD = B11111111; MsTimer2::set(100, counter); MsTimer2::start();}
+void counter() {PORTD++;}
+void setup() {MsTimer2::set(25, counter); MsTimer2::start();}
 void loop() {}
